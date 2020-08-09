@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+ {% block ccd %}
+    <br>
+    <b><h3 style="padding-left: 13%;">Add Team Member Credentials</h3></b>
+    <div class = "container" >
+    <br>
+    {% if error_message %}
+      
+<div class="alert alert-danger" >
+  <strong>Warning!</strong> {{error_message}}
+</div>
+    {% endif %}
+    </div>
+
+    <form action = "#", method = 'POST' enctype = "multipart/form-data" >
+     {% csrf_token %}
+  <div class="form-group" style="margin-left: 12%;">
+        <div class="col-3">
+            Name:
+            <input type="text" class="form-control" name ="name" aria-describedby="text" placeholder="Enter member name">
+        </div>
+  </div>
+  <div class="form-group" style="margin-left: 12%;">
+        <div class="col-3">
+            Designation
+            <input type="text" class="form-control" name ="designation" aria-describedby="text" placeholder="Enter Member Designation">
+        </div>
+  </div>
+  <div class="form-group" style="margin-left: 12%;">
+        <div class="col-3">
+            Department
+            <input type="text" class="form-control" name ="department" aria-describedby="text" placeholder="Enter Department">
+        </div>
+  </div>
+  <div class="form-group" style="margin-left: 12%;">
+        <div class="col-3">
+            Institute Name
+            <input type="text" class="form-control" name ="institute_name" aria-describedby="text" placeholder="Institute Name">
+        </div>
+  </div>
+   <div class="form-group"style="margin-left: 12%;">
+    <div class="col-3">
+    Details:
+    <textarea class="form-control" name = "body" rows="4" placeholder ="Enter member details"></textarea>
+    </div>
+  </div>
+
+    <div class="form-group"style="margin-left: 12%;">
+        <div class="col-3">
+      Upload Image:
+    <input type = "file" class = "form-control-file" name = "img">
+    </div>
+  </div>
+  <div align  = "center" >
+  <button type="submit" class="btn btn-success">Add Team Member</button>
+  </div>
+  </form>
+
+ 
+ <br>
+{% endblock %}

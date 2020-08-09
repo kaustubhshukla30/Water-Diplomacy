@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block ccd %}
+<br><br>
+<div class = "container">
+	<div class = "row">
+		<div class = "col-6">
+			<div style = "text-align:center;">
+			<img src="/static/images/podcasts.png" alt="" class="img-thumbnail" style = "width:100px; height = 100px; text-align:center;"></div><br>
+			<h2 style="font-family: 'Raleway'; color:#169EB7;font-weight:bold;text-align:center;font-size:150%;"><b>PODCASTS</b></h2><br><br>
+			{% for podcast in pc.all%}
+			<div class = "container"><a href = "{{podcast.url}}" target = "_blank" style  = "color:black; text-decoration: none;">
+			<div style = "text-align:center;">
+				<img src="{{podcast.image.url}}" alt="" class="img-fluid" style = "width:300px; height = 300px; text-align:center;"><br><br>
+				<h2 style="font-family: 'Raleway'; color:#169EB7;font-weight:bold;font-size:125%;text-align:center;"><b>{{podcast.title}}</b></h2>
+				<div class = "container"style = "width:350px;"><p style="font-family: 'Raleway'; font-size:100%;text-align:justify;"><b>{{podcast.body}}</b></p><br></div>
+			</div>
+			</a></div>
+
+			{%endfor%}
+
+
+
+		</div>
+		<div class = "col-6">
+			<div style = "text-align:center;">
+			<img src="/static/images/Media.png" alt="" class="img-thumbnail" style = "width:100px; height = 100px; text-align:center;"></div><br>
+			<h2 style="font-family: 'Raleway'; color:#169EB7;font-weight:bold;text-align:center;font-size:150%;"><b>MEDIA</b></h2><br><br>
+
+				{% for media in md.all%}
+				<div class = "container"><a href = "{{media.url}}" target = "_blank" style  = "color:black; text-decoration: none;">
+			<div style = "text-align:center;">
+				<img src="{{media.image.url}}" alt="" class="img-fluid" style = "width:300px; height = 300px; text-align:center;"><br><br>
+				<h2 style="font-family: 'Raleway'; color:#169EB7;font-weight:bold;font-size:125%;"><b>{{media.title}}</b></h2>
+				<div class = "container"style = "width:350px;"><p style="font-family: 'Raleway'; font-size:100%;text-align:justify;"><b>{{media.body}}</b></p><br></div>
+			</div>
+			</a></div>
+
+			{%endfor%}
+		</div>
+	</div>
+</div>
+
+
+ {% if user.is_authenticated %}
+          <h4 class="breadcrumbs" align = "right"><span typeof="v:Breadcrumb"><a class="btn btn-dark" href="{%url 'outreach:addpod'%}" role="button">Add Podcast</a></span></h4>
+		   <h4 class="breadcrumbs" align = "right"><span typeof="v:Breadcrumb"><a class="btn btn-dark" href="{%url 'outreach:addmedia'%}" role="button">Add Media</a></span></h4>
+{%endif%}
+
+
+	
+{% endblock %}
+
