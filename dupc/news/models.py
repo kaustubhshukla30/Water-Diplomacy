@@ -14,6 +14,9 @@ class news(models.Model):
 
     def summary(self):
         return self.body[:250]
+        
+    def __str__(self):
+        return self.title
 
 
 class update(models.Model):
@@ -33,5 +36,5 @@ class update(models.Model):
         return self.title
 
     def recent(self):
-        return self.update[:5]
+        return update.objects.all()[:5]
     

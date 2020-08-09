@@ -10,7 +10,7 @@ from .models import Story
 
 # Create your views here.
 def stories(request):
-    st = Story.objects
+    st = Story.objects.filter().order_by('-id')
 
     return render(request,'stories/stories.html',{'st':st})
 
@@ -19,10 +19,15 @@ def stories(request):
 def add(request):
     if request.method == 'POST':
         if request.POST['title'] and request.POST['name'] and request.POST['url'] and request.POST['body']:
+
+            url = request.POST['url']
+            s = url.split("=")
+            s1 = "https://www.youtube.com/embed/"
+            s2 = s1 + s[1]
             sr = Story()
             sr.title = request.POST['title']
             sr.name = request.POST['name']
-            sr.url = request.POST['url']
+            sr.url = s2
             sr.body = request.POST['body']
             sr.save()
             return redirect('stories:stories')
